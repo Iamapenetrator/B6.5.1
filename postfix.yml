@@ -1,0 +1,14 @@
+- hosts: test
+  become: true
+  tasks:
+    - name: Installs postfix mail server
+      apt: pkg=postfix 
+           state=present 
+           update_cache=true
+      tags: init postfix
+
+    - name: uninstalls postfix mail server
+      apt: pkg=postfix 
+           state=absent 
+           update_cache=true
+      tags: drop postfix
